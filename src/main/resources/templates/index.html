@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>School Management</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Form</h1>
+    <form action="/login" method="POST">
+        ID: <input type="text" name="id"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit">
+    </form>
+    <p th:text="${message}" />
+</body>
+</html>

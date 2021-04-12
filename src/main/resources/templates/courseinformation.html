@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Course Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Course Information</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Course Name</th>
+            <th>Course Description</th>
+            <th></th>
+        </tr>
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.courseId}"></td>
+            <td><p th:text="${course.courseName}"></p></td>
+            <td><p th:text="${course.courseDescription}"/></td>
+            <td>
+                <form action="/course/delete" method="POST">
+                    <input type="hidden" name="id" th:value="${course.courseId}">
+                    <input type="submit" value="Delete Course">
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <h1>Create New Course</h1>
+    <form action="/course/create" method=POST>
+        Course Name <input type="text" name="firstname"><br>
+        Course Description <input type="text" name="lastname"><br>
+        <input type="submit" value="Create Course">
+    </form>
+</body>
+</html>

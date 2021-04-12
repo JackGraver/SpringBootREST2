@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Student Information</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Student Information</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>GPA</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.studentId}"></td>
+            <td><p th:text="${student.firstname}"/></td>
+            <td><p th:text="${student.lastname}"/></td>
+            <td><p th:text="${student.gpa}"> GPA </p><td>
+            <td>
+                <form action="/student/delete" method="POST">
+                    <input type="hidden" name="id" th:value="${student.studentId}">
+                    <input type="submit" value="Delete Student">
+                </form>
+            </td>     
+        </tr>
+    </table>
+
+    <h1>Create New Student</h1>
+    <form action="/student/create" method=POST>
+        First Name: <input type="text" name="firstname"><br>
+        Last Name: <input type="text" name="lastname"><br>
+        GPA: <input type="number" name="gpa"><br>
+        <input type="submit" value="Create Student">
+    </form>
+</body>
+</html>
